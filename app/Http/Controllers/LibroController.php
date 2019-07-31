@@ -1,26 +1,28 @@
-<?php
 
+<?php
 namespace App\Http\Controllers;
 use Illuminate\http\Request;
 use Illuminate\Http\Response;
 use App\Traits\ApiResponser;
+use App\Services\LibroService;
 //use Illuminate\Support\Facades\Response;
 class LibroController extends Controller
 {
   use ApiResponser;
+  public $libroService;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(LibroService $libroService)
     {
-        //
+        $this->libroService = $libroService;
     }
 
     public function index()
    {
-
+    
    }
 
    /**
