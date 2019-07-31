@@ -17,6 +17,6 @@ use ConsumoExternoServicio;
   }
   public function getAutores()
   {
-     return $this->performRequest('GET', 'http://lumen:8000/autores');
+     return $this->performRequest('GET', '/autores');
   }
 }
