@@ -43,7 +43,7 @@ class AutorController extends Controller
     */
    public function store(Request $request)
    {
-
+     return $this->successResponse($this->autorService->crearAutor($request->all()),Response::HTTP_CREATED);
    }
 
    /**
@@ -54,7 +54,7 @@ class AutorController extends Controller
     */
    public function show($id)
    {
-
+      return $this->successResponse($this->autorService->getAutor($id));
    }
 
    /**
@@ -77,7 +77,7 @@ class AutorController extends Controller
     */
    public function update(Request $request, $id)
    {
-
+     return $this->successResponse($this->autorService->editarAutor($request->all(),$id));
    }
 
    /**
@@ -88,7 +88,7 @@ class AutorController extends Controller
     */
    public function destroy($id)
    {
-
+      return $this->successResponse($this->autorService->eliminarAutor($id));
    }
 
     //
