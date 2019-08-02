@@ -1,28 +1,31 @@
-
 <?php
+
 namespace App\Http\Controllers;
 use Illuminate\http\Request;
 use Illuminate\Http\Response;
 use App\Traits\ApiResponser;
 use App\Services\LibroService;
+use App\Services\AutorService;
 //use Illuminate\Support\Facades\Response;
 class LibroController extends Controller
 {
   use ApiResponser;
   public $libroService;
+  public $autorService;
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct(LibroService $libroService)
+    public function __construct(LibroService $libroService, AutorService $autorService)
     {
         $this->libroService = $libroService;
+        $this->autorService = $autorService;
     }
 
     public function index()
    {
-    
+    return $this->successResponse($this->libroService->getLibros());
    }
 
    /**
@@ -32,7 +35,7 @@ class LibroController extends Controller
     */
    public function create()
    {
-       //
+
    }
 
    /**
@@ -43,7 +46,8 @@ class LibroController extends Controller
     */
    public function store(Request $request)
    {
-
+     $this->autorService->getAutor($request->autor_id);
+      return $this->successResponse($this->libroService->guardarLibro($request->all(),Response::HTTP_CREATED));
    }
 
    /**
@@ -54,7 +58,7 @@ class LibroController extends Controller
     */
    public function show($id)
    {
-
+      return $this->successResponse($this->libroService->unLibro($id));
    }
 
    /**
@@ -77,7 +81,7 @@ class LibroController extends Controller
     */
    public function update(Request $request, $id)
    {
-
+      return $this->successResponse($this->libroService->actulizarLibro($request->all(),$id));
    }
 
    /**
@@ -88,7 +92,7 @@ class LibroController extends Controller
     */
    public function destroy($id)
    {
-
+      $this->successResponse($this->libroService->eliminarLibro($id));
    }
 
     //
