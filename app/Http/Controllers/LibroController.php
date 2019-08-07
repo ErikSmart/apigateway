@@ -58,7 +58,13 @@ class LibroController extends Controller
     */
    public function show($id)
    {
-      return $this->successResponse($this->libroService->unLibro($id));
+     $json = [$this->libroService->unLibro($id), $this->autorService->getAutor($id)];
+     $json = json_encode($json);
+     $patron = array('/\\\"/','/}}/','/{{/','/"{/');
+     $sustitucion = array("\"","\"","");
+     $json = preg_replace($patron,$sustitucion, $json);
+
+      return $this->successResponse($json );
    }
 
    /**
