@@ -10,7 +10,7 @@
 | and give it the Closure to call when that URI is requested.
 |
 */
-
+$router->group(['middleware' => 'client.credentials'],function() use ($router){
 $router->get('/autores','AutorController@index');
 $router->post('/autores','AutorController@store');
 $router->get('/autores/{id}','AutorController@show');
@@ -24,3 +24,4 @@ $router->post('/libro','LibroController@store');
 $router->put('/libro/{id}','LibroController@update');
 $router->patch('/libro/{id}','LibroController@update');
 $router->delete('/libro/{id}','LibroController@destroy');
+});
