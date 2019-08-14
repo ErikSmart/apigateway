@@ -11,10 +11,12 @@ class AutorService
 {
     use ConsumoExternoServicio;
     public $baseUri;
+    public $secret;
 
     public function __construct()
     {
         $this->baseUri = config('services.autors.base_uri');
+        $this->secret = config('services.autors.secret');
     }
     public function getAutores()
     {

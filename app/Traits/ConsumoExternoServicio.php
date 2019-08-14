@@ -13,6 +13,10 @@ trait ConsumoExternoServicio
     $cliente = new Client([
       'base_uri' => $this->baseUri,
     ]);
+//Le pasa el parametro del tocken a headers 
+    if (isset($this->secret)) {
+      $headers['Authorization'] = $this->secret;
+    }
 
     $response = $cliente->request($method,$requestUrl,
     [

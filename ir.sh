@@ -1,1 +1,1 @@
-php -S lumen:8002 -t ./public
+php -S lumen3:8002 -t ./public
